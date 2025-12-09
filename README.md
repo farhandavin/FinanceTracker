@@ -39,9 +39,9 @@ A personal finance management application featuring a unique **hand-drawn (paper
 
 ## 📸 Screenshots
 
-| Dashboard | Mobile View |
+| Dashboard 
 |:---:|:---:|
-| ![Desktop](./desktop.png) | ![Mobile](./mobile.png) |
+| ![Desktop]<img width="1905" height="907" alt="image" src="https://github.com/user-attachments/assets/0875975c-c362-4bf9-8292-df0a227a5063" />
 
 ---
-Created by [Your Name]
+Created by farhan davin rinaldi
