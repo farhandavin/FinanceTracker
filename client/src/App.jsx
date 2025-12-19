@@ -8,6 +8,7 @@ import './App.css';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   // --- STATE MANAGEMENT (SAMA SEPERTI SEBELUMNYA) ---
   const [transactions, setTransactions] = useState([]);
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function App() {
   // --- FETCH DATA ---
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/transactions');
+      const res = await axios.get(`${API_URL}/transactions`);
       setTransactions(res.data);
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -46,7 +47,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/transactions', formData);
+      await axios.post(`${API_URL}/transactions`, formData);
       fetchTransactions();
       setFormData({ description: '', amount: '', type: 'expense', category: 'Makanan' });
     } catch (err) {
@@ -56,7 +57,7 @@ function App() {
 
   const handleDelete = async (id) => {
     if (window.confirm('Coret transaksi ini?')) { // "Coret" lebih cocok dgn tema kertas
-      await axios.delete(`http://localhost:5000/transactions/${id}`);
+      await axios.delete(`${API_URL}/transactions/${id}`);
       fetchTransactions();
     }
   };
@@ -64,7 +65,7 @@ function App() {
   const getAIInsight = async () => {
     setLoadingAI(true);
     try {
-      const res = await axios.get('http://localhost:5000/ai-insight');
+      const res = await axios.get(`${API_URL}/ai-insight`);
       setAiInsight(res.data.insight);
     } catch (err) {
       alert("Gagal menghubungi AI");
